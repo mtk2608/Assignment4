@@ -16,69 +16,306 @@ namespace TicTacToeSubmissionConole
             _boardRenderer = new TicTacToeConsoleRenderer(10, 6);
             _boardRenderer.Render();
         }
-        
+
+        public static string[,] pos = { { "", "", "" }, { "", "", "" }, { "", "", "" } };
+        public static string[] position = { "", "", "", "", "", "", "", "", "" };
 
 
- 
-                 
-        public int x = 0;
-        public int o = 0;
 
 
              public void Run()
              {
 
             // FOR ILLUSTRATION CHANGE TO YOUR OWN LOGIC TO DO TIC TAC TOE
-             while (true)
-              {
-                Console.SetCursorPosition(2, 19);
+            pos[0, 0] = position[0];
+            pos[0, 1] = position[1];
+            pos[0, 2] = position[2];
+            pos[1, 0] = position[3];
+            pos[1, 1] = position[4];
+            pos[1, 2] = position[5];
+            pos[2, 0] = position[6];
+            pos[2, 1] = position[7];
+            pos[2, 2] = position[8];
 
-                Console.Write("Player X");
+            int x = 0;
+            int o = 0;
 
-                Console.SetCursorPosition(2, 20);
+            while (true)
+            {
 
-                Console.Write("Please Enter Row: ");
-                string row = Console.ReadLine();
-
-                Console.SetCursorPosition(2, 22);
-
-
-                Console.Write("Please Enter Column: ");
-                string column = Console.ReadLine();
-                _boardRenderer.AddMove(int.Parse(row), int.Parse(column), PlayerEnum.X, true);
-                x += 1;
-
-                if (x == 5)
+                while (true)
                 {
+                    _boardRenderer.Render();
+                    Console.SetCursorPosition(2, 19);
+
+                    Console.Write("Player X");
+
+                    Console.SetCursorPosition(2, 20);
+
+                    Console.Write("Please Enter Row: ");
+                    var row = Console.ReadLine();
+
+                    Console.SetCursorPosition(2, 22);
+
+
+                    Console.Write("Please Enter Column: ");
+                    var column = Console.ReadLine();
+
+
+
+
+                    if (pos[int.Parse(row), int.Parse(column)] == "")
+                    {
+                        _boardRenderer.AddMove(int.Parse(row), int.Parse(column), PlayerEnum.X, true);
+                        pos[int.Parse(row), int.Parse(column)] = "X";
+                        x += 1;
+                        break;
+                    }
+
+                }
+
+                if (pos[0, 0] == "X" && pos[0, 1] == "X" && pos[0, 2] == "X") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[1, 0] == "X" && pos[1, 1] == "X" && pos[1, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "X" && pos[2, 1] == "X" && pos[2, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
                     break;
                 }
 
-                Console.SetCursorPosition(2, 19);
-
-                Console.Write("Player O");
-
-                Console.SetCursorPosition(2, 20);
-
-                Console.Write("Please Enter Row: ");
-                row = Console.ReadLine();
-
-                Console.SetCursorPosition(2, 22);
-
-
-                Console.Write("Please Enter Column: ");
-                column = Console.ReadLine();
-                _boardRenderer.AddMove(int.Parse(row), int.Parse(column), PlayerEnum.O, true);
-                o += 1;
-
-                if (o == 5)
+                else if (pos[0, 0] == "X" && pos[1, 1] == "X" && pos[2, 2] == "X") 
                 {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "X" && pos[1, 1] == "X" && pos[0, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
                     break;
                 }
 
-                 static int CheckWin()
+                else if (pos[0, 0] == "X" && pos[1, 0] == "X" && pos[2, 0] == "X") 
                 {
-                    return 0;
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
                 }
+                else if (pos[0, 1] == "X" && pos[1, 1] == "X" && pos[2, 1] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[0, 2] == "X" && pos[1, 2] == "X" && pos[2, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+
+
+                if (pos[0, 0] == "O" && pos[0, 1] == "O" && pos[0, 2] == "O") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[1, 0] == "O" && pos[1, 1] == "O" && pos[1, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "O" && pos[2, 1] == "O" && pos[2, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "O" && pos[1, 1] == "O" && pos[2, 2] == "O") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "O" && pos[1, 1] == "O" && pos[0, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "O" && pos[1, 0] == "O" && pos[2, 0] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+                else if (pos[0, 1] == "O" && pos[1, 1] == "O" && pos[2, 1] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+                else if (pos[0, 2] == "O" && pos[1, 2] == "O" && pos[2, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+
+                if (x == 5 & o == 4)
+                {
+                    Console.Clear();
+                    Console.WriteLine("DRAW!!!!");
+                    break;
+                }
+
+                while (true)
+                {
+                    _boardRenderer.Render();
+                    Console.SetCursorPosition(3, 25);
+
+                    Console.Write("Player O");
+
+                    Console.SetCursorPosition(3, 26);
+
+                    Console.Write("Please Enter Row: ");
+                    var row1 = Console.ReadLine();
+
+                    Console.SetCursorPosition(3, 28);
+
+
+                    Console.Write("Please Enter Column: ");
+                    var column1 = Console.ReadLine();
+
+                    if (pos[int.Parse(row1), int.Parse(column1)] == "")
+                    {
+                        _boardRenderer.AddMove(int.Parse(row1), int.Parse(column1), PlayerEnum.O, true);
+                        pos[int.Parse(row1), int.Parse(column1)] = "O";
+                        o += 1;
+                        break;
+                    }
+
+                  
+                }
+                if (pos[0, 0] == "X" && pos[0, 1] == "X" && pos[0, 2] == "X") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[1, 0] == "X" && pos[1, 1] == "X" && pos[1, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "X" && pos[2, 1] == "X" && pos[2, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "X" && pos[1, 1] == "X" && pos[2, 2] == "X") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "X" && pos[1, 1] == "X" && pos[0, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "X" && pos[1, 0] == "X" && pos[2, 0] == "X") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[0, 1] == "X" && pos[1, 1] == "X" && pos[2, 1] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+                else if (pos[0, 2] == "X" && pos[1, 2] == "X" && pos[2, 2] == "X")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player X Wins!!!");
+                    break;
+                }
+
+
+                if (pos[0, 0] == "O" && pos[0, 1] == "O" && pos[0, 2] == "O") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[1, 0] == "O" && pos[1, 1] == "O" && pos[1, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "O" && pos[2, 1] == "O" && pos[2, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "O" && pos[1, 1] == "O" && pos[2, 2] == "O") 
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+                else if (pos[2, 0] == "O" && pos[1, 1] == "O" && pos[0, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player O Wins!!!");
+                    break;
+                }
+
+                else if (pos[0, 0] == "O" && pos[1, 0] == "O" && pos[2, 0] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+                else if (pos[0, 1] == "O" && pos[1, 1] == "O" && pos[2, 1] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+                else if (pos[0, 2] == "O" && pos[1, 2] == "O" && pos[2, 2] == "O")
+                {
+                    Console.Clear();
+                    Console.WriteLine("Player 0 Wins!!!");
+                    break;
+                }
+
+                
 
             }
              }
@@ -86,30 +323,6 @@ namespace TicTacToeSubmissionConole
 
     }
 
-        /*public void Run()
-        {
-
-            // FOR ILLUSTRATION CHANGE TO YOUR OWN LOGIC TO DO TIC TAC TOE
-
-            Console.SetCursorPosition(2, 19);
-
-            Console.Write("Player X");
-
-            Console.SetCursorPosition(2, 20);
-
-            Console.Write("Please Enter Row: ");
-            var row = Console.ReadLine();
-
-            Console.SetCursorPosition(2, 22);
-
-
-            Console.Write("Please Enter Column: ");
-            var column = Console.ReadLine();
-
-
-            // THIS JUST DRAWS THE BOARD (NO TIC TAC TOE LOGIC)
-            _boardRenderer.AddMove(int.Parse(row), int.Parse(column), PlayerEnum.X, true);           
-
-        }*/
+        
 
     }
